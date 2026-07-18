@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Explorer v2</title>
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+    
+    <header class="navbar">
+
+        <div class="logo">Movie Explorer</div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Search</a>
+            <a href="#">Favorites</a>
+            <a href="#">WatchList</a>
+        </nav>
+
+    </header>
+
+
+
+    <main>
+
+        <section class="hero">
+            
+            <div class="hero-content">
+
+                <p class="hero-tag">Featured Movie</p>
+
+                <h1 class="hero-title">Movie-Title</h1>
+
+                <p class="hero-meta">⭐ 8.8 • 2024 • Sci-Fi</p>
+
+                <p class="hero-overview">Movie Overview..</p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn">Watch Trailer</button>
+                    <button class="secondary-btn">More Details</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="trending">
+
+            <div class="movie-section">
+                <p class="trending-header">Trending</p>
+
+                <div class="movie-track trending-container">
+                    
+                
+                </div>
+            </div>
+        </section>
+
+        <section class="popular">
+
+            <div class="movie-section">
+                <p class="popular-header">Popular</p>
+
+                <div class="movie-track popular-container">
+                    
+                
+                </div>
+            </div>
+        </section>
+
+
+        <section class="top-rated">
+
+            <div class="movie-section">
+                <p class="toprated-header">Top rated</p>
+
+                <div class="movie-track toprated-container">
+                    
+                
+                </div>
+            </div>
+        </section>
+
+
+
+    </main>
+
+    <script type="module" src="src/js/main.js" defer></script>
+    <script type="module" src="src/js/api/tmbd.js" defer></script>
+</body>
+</html>
