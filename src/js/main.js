@@ -55,14 +55,16 @@ function createMovieCard(movie) {
 const posterUrl =`https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const card = document.createElement("div");
   card.classList.add("movie-card");
+    console.log(movie.id);
     
   card.innerHTML = `
+ <div class ="movie-info">
     <img src= "${posterUrl}" alt = "">
     <h3>${movie.title}</h3>
     <p>${movie.release_date.slice(0, 4)}</p>
+</div>
   `
 
   return card;
 }
-
 
