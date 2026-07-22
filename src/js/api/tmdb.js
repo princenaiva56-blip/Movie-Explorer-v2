@@ -56,3 +56,21 @@ export async function getTopRatedMovies(){
     }
 }
 
+export async function getMovieDetails(movieId) {
+    try {
+        
+        const response4 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
+
+        if(!response4.ok){
+            throw new Error("Failed to fetch movie details")
+        }
+
+        const detailsData = await response4.json();
+       return detailsData;
+        
+    } catch (error) {
+        return error.message;
+        
+    }
+}
+

@@ -54,8 +54,10 @@ function createMovieCard(movie) {
 
 const posterUrl =`https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const card = document.createElement("div");
+
   card.classList.add("movie-card");
-    console.log(movie.id);
+
+  card.dataset.id = movie.id;
     
   card.innerHTML = `
  <div class ="movie-info">
@@ -64,7 +66,14 @@ const posterUrl =`https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     <p>${movie.release_date.slice(0, 4)}</p>
 </div>
   `
+   card.addEventListener("click", () => {
+    const movieId = card.dataset.id;
+    window.location.href = `movie.html?id=${movieId}`
+    
+  })
 
   return card;
+
+ 
 }
 
