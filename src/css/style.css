@@ -42,7 +42,7 @@ nav a:hover{
 }
 
 .hero{
-     min-height: clamp(400px, 60vh, 550px); /*clamp(min, preferred, max)*/
+     min-height: clamp(350px, 550vh, 450px); /*clamp(min, preferred, max)*/
 
     position: relative;
 
@@ -50,7 +50,7 @@ nav a:hover{
     align-items: center;
 
     padding: 0 80px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     
 
     background-image:linear-gradient(
@@ -115,7 +115,7 @@ nav a:hover{
     font-size: 1rem;
 }
 
-.hero-buttons button {
+.movie-buttons button {
     padding: 14px 24px;
     border: none;
     border-radius: 10px;

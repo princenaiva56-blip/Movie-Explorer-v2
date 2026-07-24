@@ -4,10 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/movie.css">
 </head>
 <body>
+
+        <header class="navbar">
+
+        <div class="logo">Movie Explorer</div>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Search</a>
+            <a href="#">Favorites</a>
+            <a href="#">WatchList</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="movie-hero">
+
+        <div class="movie-container">
+
+            <div class="movie-poster">
+                <img src="" alt="">
+            </div>
+
+            <div class="movie-content">
+
+                <h1 class="movie-title">Movie Title</h1>
+
+                <p class="movie-meta">⭐ 8.8 • 2024</p> 
+
+                <div class="movie-genres"></div>
+
+                <p class="movie-overview">Movie overview....</p>
+
+                <div class="movie-buttons">
+
+                    <button class="primary-btn">Watch Trailer</button>
+                    <button class="secondary-btn">Add to Favorites</button>
+                </div>
+
+            </div>
+        </div>
+        </section>
+
+              <section class="cast">
+
+            <div class="movie-section">
+
+                <h2>Top Cast</h2>
+
+                <div class="cast-container"></div>
+            </div>
+        </section>
+
+        <section class="similar-movies">
+
+            <div class="movie-section">
+
+                <h2>Similar Movies</h2>
+
+                <div class="movie-track  similar-container">
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
     
 
     <script type="module" src="src/js/movie.js"></script>
+    <script type="module" src="src/js/main.js"></script>
 </body>
 </html>

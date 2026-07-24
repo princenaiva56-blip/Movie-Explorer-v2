@@ -74,3 +74,54 @@ export async function getMovieDetails(movieId) {
     }
 }
 
+export async function getMovieVideos(movieId){
+    try {
+        const response5 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
+
+        if(!response5.ok){
+            throw new Error("Failed to Fetch movie Videos")
+        }
+
+        const videosData = await response5.json();
+        
+        return videosData;
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export async function getSimilarMovies(movieId){
+
+    try {
+      
+        const response6 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`)
+
+        if(!response6.ok){
+            throw new Error("Failed to fetch similar movies")
+        }
+
+        const similarMoviesData = await response6.json()
+
+        return similarMoviesData;
+    } catch (error) {
+        return error.message;
+    }
+}
+
+export async function getMovieCredits(movieId){
+
+    try {
+        
+        const  response7 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+
+        if(!response7.ok){
+            throw new Error("Failed to fetch credits")
+        }
+
+        const creditsData = await response7.json();
+
+        return creditsData;
+    } catch (error) {
+        return error.message;
+    }
+}

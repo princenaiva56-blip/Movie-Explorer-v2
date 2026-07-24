@@ -1,0 +1,164 @@
+.movie-hero{
+    position: relative;
+    min-height: clamp(300px, 400vh, 500px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 80px;
+
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
+    
+}
+ 
+.movie-hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:160px;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(18,18,18,0),
+        #121212
+    );
+
+    pointer-events: none;
+}
+
+.movie-container{
+    display: flex;
+    gap: 60px;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    align-items: center;
+
+    animation: fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movie-poster{
+    width: 280px;
+
+    border-radius: 16px;
+
+    display: block;
+}
+
+.movie-poster img{
+    width: 300px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.55);
+}
+
+.movie-title{
+    font-size: 4rem;
+    
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    margin-bottom: 18px;
+}
+
+.movie-meta{
+    color:#d1d5db;
+
+    font-size:1.1rem;
+
+    margin-bottom:18px;
+}
+
+.movie-genres{
+
+    color:#f5c518;
+
+    font-weight:600;
+
+    margin-bottom:28px;
+
+}
+
+.movie-overview{
+    max-width: 700px;
+
+    color: #c7c7c7;
+
+    font-size: 1.05rem;
+
+    margin-bottom: 36px;
+}
+
+.cast-container{
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 24px;
+
+    margin-top: 24px;
+}
+
+.cast-card{
+    text-align: center;
+
+    transition: transform .3s ease;
+}
+
+.cast-card:hover{
+    transform: translateY(-8px);
+}
+
+.cast-card img{
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+.cast-card h3{
+    margin-top: 16px;
+
+    font-weight: 1rem;
+
+    font-weight: 600;
+}
+
+.cast-card p{
+    margin-top: 8px;
+
+    color: #9ca3af;
+
+    font-size: .9rem;
+}
