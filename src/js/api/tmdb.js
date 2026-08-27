@@ -12,7 +12,6 @@ const baseUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKe
         
          const trendingData = await response.json();
          
-         
          return trendingData;
         
         
@@ -125,3 +124,25 @@ export async function getMovieCredits(movieId){
         return error.message;
     }
 }
+
+export async function getSearchedMovies(encodedMovieName){
+
+    try{
+
+        const response8 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodedMovieName}`) 
+
+        if(!response8.ok){
+            throw new Error("Failed to fetch search results")
+        }
+
+        const searchedMovies = await response8.json();
+        
+        return searchedMovies;
+    }
+
+    catch(error){
+        return error.message;
+    }
+}
+
+getSearchedMovies();
