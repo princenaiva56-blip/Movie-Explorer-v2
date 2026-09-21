@@ -14,10 +14,10 @@
         <div class="logo">Movie Explorer</div>
 
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Search</a>
-            <a href="#">Favorites</a>
-            <a href="#">WatchList</a>
+            <a href="index.html">Home</a>
+            <a href="search.html">Search</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="watchlist.html">WatchList</a>
         </nav>
 
     </header>
@@ -34,18 +34,19 @@
 
             <div class="movie-content">
 
-                <h1 class="movie-title">Movie Title</h1>
+                <h1 class="movie-title"></h1>
 
-                <p class="movie-meta">⭐ 8.8 • 2024</p> 
+                <p class="movie-meta"></p> 
 
                 <div class="movie-genres"></div>
 
-                <p class="movie-overview">Movie overview....</p>
+                <p class="movie-overview"></p>
 
                 <div class="movie-buttons">
 
                     <button class="primary-btn">Watch Trailer</button>
-                    <button class="secondary-btn">Add to Favorites</button>
+                    <button class="secondary-btn favorites-btn">Add to Favorites</button>
+                    <button class="secondary-btn" id="watchlist-btn">Add to Watchlist</button>
                 </div>
 
             </div>
@@ -80,5 +81,6 @@
 
     <script type="module" src="src/js/movie.js"></script>
     <script type="module" src="src/js/main.js"></script>
+    <script type="module" src="src/js/favorites.js"></script>
 </body>
 </html>

@@ -1,20 +1,20 @@
 const apiKey = "305ba29eafe3130f149a78bcf39864f0";
 const baseUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKey}`
 
- export async function getTrendingMovies () {
+export async function getTrendingMovies() {
     try {
 
         const response = await fetch(baseUrl);
-        
-        if(!response.ok){
+
+        if (!response.ok) {
             throw new Error("Failed to fetch")
         }
-        
-         const trendingData = await response.json();
-         
-         return trendingData;
-        
-        
+
+        const trendingData = await response.json();
+
+        return trendingData;
+
+
     } catch (error) {
         return error.message;
     }
@@ -22,80 +22,80 @@ const baseUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${apiKe
 
 export async function getPopularMovies() {
 
-    try{
+    try {
         const response2 = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`)
-            if(!response2.ok){
-                throw new Error("Failed to fetch")
-            }
+        if (!response2.ok) {
+            throw new Error("Failed to fetch")
+        }
 
         const popularData = await response2.json();
         return popularData;
-        
+
     }
 
-    catch(error){
+    catch (error) {
         return error.message;
     }
 }
 
-export async function getTopRatedMovies(){
-    try{
+export async function getTopRatedMovies() {
+    try {
         const response3 = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
-         if(!response3.ok){
-                throw new Error("Failed to fetch")
-            }
+        if (!response3.ok) {
+            throw new Error("Failed to fetch")
+        }
 
         const topRatedData = await response3.json();
         return topRatedData;
-        
+
     }
-    catch(error){
+    catch (error) {
         return error.message;
-        
+
     }
 }
 
 export async function getMovieDetails(movieId) {
     try {
-        
+
         const response4 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
 
-        if(!response4.ok){
+        if (!response4.ok) {
             throw new Error("Failed to fetch movie details")
         }
 
         const detailsData = await response4.json();
-       return detailsData;
-        
+        return detailsData;
+
     } catch (error) {
         return error.message;
-        
+
     }
 }
 
-export async function getMovieVideos(movieId){
+export async function getMovieVideos(movieId) {
     try {
         const response5 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
 
-        if(!response5.ok){
+        if (!response5.ok) {
             throw new Error("Failed to Fetch movie Videos")
         }
 
         const videosData = await response5.json();
-        
+
         return videosData;
     } catch (error) {
         return error.message;
     }
 }
 
-export async function getSimilarMovies(movieId){
+export async function getSimilarMovies(movieId) {
 
     try {
-      
+
         const response6 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`)
 
-        if(!response6.ok){
+        if (!response6.ok) {
             throw new Error("Failed to fetch similar movies")
         }
 
@@ -107,13 +107,13 @@ export async function getSimilarMovies(movieId){
     }
 }
 
-export async function getMovieCredits(movieId){
+export async function getMovieCredits(movieId) {
 
     try {
-        
-        const  response7 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
 
-        if(!response7.ok){
+        const response7 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
+
+        if (!response7.ok) {
             throw new Error("Failed to fetch credits")
         }
 
@@ -125,22 +125,22 @@ export async function getMovieCredits(movieId){
     }
 }
 
-export async function getSearchedMovies(encodedMovieName){
+export async function getSearchedMovies(encodedMovieName) {
 
-    try{
+    try {
 
-        const response8 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodedMovieName}`) 
+        const response8 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodedMovieName}`)
 
-        if(!response8.ok){
+        if (!response8.ok) {
             throw new Error("Failed to fetch search results")
         }
 
         const searchedMovies = await response8.json();
-        
+
         return searchedMovies;
     }
 
-    catch(error){
+    catch (error) {
         return error.message;
     }
 }

@@ -16,7 +16,7 @@ body{
     align-items: center;
 
     padding: 0 80px;
-    height: 80px;
+    height: 60px;
 
     border-bottom: 1px solid #2c2c2c;
 }
@@ -216,4 +216,19 @@ nav a:hover{
     color: #9ca3af;
 
     font-size: 0.9rem;
+}
+
+.status-message {
+    padding: 30px 20px;
+    text-align: center;
+    width: 100%;
+    color: #888;
+}
+
+.status-message.error {
+    color: #d9534f;
+}
+
+.status-message.empty {
+    color: #888;
 }

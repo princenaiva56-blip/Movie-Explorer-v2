@@ -3,7 +3,7 @@ import { displayMovies } from "./ui/moviecard.js";
 
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
-console.log(movieId);
+
 
 const movieHero = document.querySelector(".movie-hero")
 const moviePoster = document.querySelector(".movie-poster img")
@@ -17,7 +17,7 @@ const castContainer = document.querySelector(".cast-container");
 
 
 const similarMovies = await getSimilarMovies(movieId);
-displayMovies(similarMovies, similarContainer)
+displayMovies(similarMovies, similarContainer);
 console.log("Similar:", similarMovies);
 
 const movieCredits = await getMovieCredits(movieId)
@@ -107,6 +107,42 @@ function displayCast(actors, container){
         container.appendChild(createCastCard(actor));
     })
 }
+
+const favoritesBtn = document.querySelector(".favorites-btn");
+
+favoritesBtn.addEventListener("click", () => {
+    const storedFavorites = localStorage.getItem("favorites");
+
+    const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+
+    if(!favorites.includes(movieId)){
+        favorites.push(movieId)
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    console.log("stored favorites:", storedFavorites);
+});
+
+const watchlistBtn = document.getElementById("watchlist-btn");
+
+watchlistBtn.addEventListener("click", () => {
+    const storedWatchlist = localStorage.getItem("watchlist");
+
+    const watchlist = storedWatchlist
+        ? JSON.parse(storedWatchlist)
+        : [];
+
+    if (!watchlist.includes(movieId)) {
+        watchlist.push(movieId);
+    }
+
+    localStorage.setItem(
+        "watchlist",
+        JSON.stringify(watchlist)
+    );
+
+    console.log("Watchlist:", watchlist);
+});
 
 displayMovieDetails();
 displayMovieTrailer();
