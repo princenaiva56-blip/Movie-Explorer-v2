@@ -1,4 +1,4 @@
-import { getTrendingMovies, getPopularMovies, getTopRatedMovies } from "./api/tmdb.js";
+import { getTrendingMovies, getPopularMovies, getTopRatedMovies, getMovieVideos } from "./api/tmdb.js";
 import { displayMovies, createMovieCard } from "./ui/moviecard.js";
 import { showMessage } from "./ui/status.js";
 
@@ -120,14 +120,33 @@ async function init() {
 
     const featuredMovie = trendingMovies.results[0];
 
-    watchTrailerBtn.onclick = () => {
-    // we'll connect this to the trailer next
-        };
+    console.log("Featured movie:", featuredMovie);
+    console.log("Featured movie ID:", featuredMovie.id);
+    console.log("More details button:", moreDetailsBtn);
+
+watchTrailerBtn.onclick = async () => {
+    const movieVideos = await getMovieVideos(featuredMovie.id);
+
+    const trailer = movieVideos.results.find(
+        video => video.type === "Trailer" && video.site === "YouTube"
+    );
+
+    if (trailer) {
+        window.open(`https://www.youtube.com/watch?v=${trailer.key}`, "_blank");
+    } else {
+        alert("Trailer not available.");
+    }
+};
 
     moreDetailsBtn.onclick = () => {
-    window.location.href = `movie.html?id=${featuredMovie.id}`;
 
-    console.log("Featured Movie :" ,window.location.href = `movie.html?id=${featuredMovie.id}`);
+        console.log("More Details clicked");
+        
+    window.location.href = `movie.html?id=${featuredMovie.id}`;
+    moreDetailsBtn.addEventListener("click", () => {
+    console.log("BUTTON CLICKED");
+});
+
     
     };
     
@@ -157,7 +176,7 @@ function showHeroLoading() {
 function showHeroError() {
     hero.style.backgroundImage = "none";
 
-    heroTitle.textContent = "Unable to load featured movie";
+    heroTitle.textContent = "Couldn't load featured movie. Please try again.";
     heroMeta.textContent = "";
     heroOverview.textContent =
         "We couldn't load movie information right now. Please try again later.";

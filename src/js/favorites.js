@@ -1,5 +1,6 @@
 import { getMovieDetails } from "./api/tmdb.js";
 import { displayMovies } from "./ui/moviecard.js";
+import { showMessage } from "./ui/status.js";
 
 const storedFavorites = localStorage.getItem("favorites");
 
@@ -10,12 +11,42 @@ const favoritesContainer = document.querySelector(".favorites-results");
 console.log("favoriteIds:", favoriteIds);
 
 async function loadFavoriteMovie() {
-    if (favoriteIds.length > 0) {
 
-        const movies = await Promise.all(favoriteIds.map(id => getMovieDetails(id)));
+    showMessage(
+        favoritesContainer,
+        "Loading your favorites..."
+    );
 
-        displayMovies({results: movies}, favoritesContainer, true)
+    if (favoriteIds.length === 0) {
+        showMessage(
+            favoritesContainer,
+            "You haven't added any favorite movies yet.",
+            "empty"
+        );
+        return;
+    }
+
+    try {
+        const movies = await Promise.all(
+            favoriteIds.map(id => getMovieDetails(id))
+        );
+
+        displayMovies(
+            { results: movies },
+            favoritesContainer,
+            true
+        );
+
         console.log("Favorite movies:", movies);
+
+    } catch (error) {
+        console.error("Favorites error:", error);
+
+        showMessage(
+            favoritesContainer,
+            "Couldn't load your favorites. Please try again.",
+            "error"
+        );
     }
 }
 

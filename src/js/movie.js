@@ -1,8 +1,13 @@
 import { getMovieDetails, getMovieVideos, getSimilarMovies, getMovieCredits } from "./api/tmdb.js";
 import { displayMovies } from "./ui/moviecard.js";
+import { showMessage } from "./ui/status.js";
 
 const params = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
+
+if (!movieId) {
+    console.error("No movie ID found in URL.");
+}
 
 
 const movieHero = document.querySelector(".movie-hero")
@@ -16,69 +21,158 @@ const similarContainer = document.querySelector(".similar-container");
 const castContainer = document.querySelector(".cast-container");
 
 
-const similarMovies = await getSimilarMovies(movieId);
-displayMovies(similarMovies, similarContainer);
-console.log("Similar:", similarMovies);
+async function loadSimilarMovies() {
+    showMessage(similarContainer, "Loading similar movies...");
 
-const movieCredits = await getMovieCredits(movieId)
-console.log("Credits:", movieCredits.cast.slice(0, 8));
-const mainCast = movieCredits.cast.slice(0, 8);
+    try {
+        const similarMovies = await getSimilarMovies(movieId);
 
+        if (similarMovies.results.length === 0) {
+            showMessage(
+                similarContainer,
+                "No similar movies found.",
+                "empty"
+            );
+            return;
+        }
 
-async function displayMovieDetails(movie){
+        displayMovies(similarMovies, similarContainer);
+    } catch (error) {
+        console.error("Similar movies error:", error);
 
-    const movieDetails = await getMovieDetails(movieId);
-
-    const posterUrl = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
-
-
-    const runtimeHour = Math.floor(movieDetails.runtime / 60);
-    const runtimeMinute = Math.floor(movieDetails.runtime % 60);
-    console.log(runtimeHour, runtimeMinute);
-
-    movieTitle.textContent = movieDetails.title;
-    movieOverview.textContent = movieDetails.overview;
-    movieMeta.textContent = `⭐ ${movieDetails.vote_average.toFixed(1)}  •  ${movieDetails.
-        release_date.slice(0, 4)}  •  ${runtimeHour}h  ${runtimeMinute}m`
-    moviePoster.src = posterUrl;
-    moviePoster.alt = movieDetails.title;
-
-    movieHero.style.backgroundImage = `
-        linear-gradient(
-        to right,
-        rgba(18,18,18,.95),
-        rgba(18,18,18,.6),
-        rgba(18,18,18,.2)), url(${posterUrl})`
-
-    let genresArray = movieDetails.genres;
-    let genres = genresArray.map(genre => genre.name);
-    movieGenres.textContent = genres.join("    •    ");
-
+        showMessage(
+            similarContainer,
+            "Couldn't load similar movies. Please try again.",
+            "error"
+        );
+    }
 }
 
-async function displayMovieTrailer(movie){
-    const movieVideos = await getMovieVideos(movieId);
-    console.log("Videos:", movieVideos);
+async function loadCast() {
+    showMessage(castContainer, "Loading cast...");
 
-    const trailer = movieVideos.results.find( video => video.type === "Trailer" && video.site === "YouTube" );
+    try {
+        const movieCredits = await getMovieCredits(movieId);
 
-    
+        const mainCast = movieCredits.cast.slice(0, 8);
 
-    trailerBtn.addEventListener("click", () => {
-        
-        
-        if(trailer){ //trailer is an object which js treats as truthy
-
-            const youtubeUrl = `https://www.youtube.com/watch?v=${trailer.key}`;
-           
-            window.open(youtubeUrl, "_blank");
-            console.log("Button clicked");
-            console.log("Trailer:", trailer)
-            
-        }else{
-            alert("No trailer available for this movie.")
+        if (mainCast.length === 0) {
+            showMessage(
+                castContainer,
+                "No cast information available.",
+                "empty"
+            );
+            return;
         }
-    });
+
+        displayCast(mainCast, castContainer);
+
+    } catch (error) {
+        console.error("Cast error:", error);
+
+        showMessage(
+            castContainer,
+            "Couldn't load the cast. Please try again.",
+            "error"
+        );
+    }
+}
+
+
+async function displayMovieDetails() {
+    showMessage(movieOverview, "Loading movie details...");
+
+    try {
+        const movieDetails = await getMovieDetails(movieId);
+
+        if (!movieDetails || !movieDetails.id) {
+            showMessage(
+                movieOverview,
+                "Movie information is not available.",
+                "empty"
+            );
+            return;
+        }
+
+        const posterUrl =
+            `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
+
+        const runtimeHour = Math.floor(movieDetails.runtime / 60);
+        const runtimeMinute = movieDetails.runtime % 60;
+
+        movieTitle.textContent = movieDetails.title;
+
+        movieMeta.textContent =
+            `⭐ ${movieDetails.vote_average.toFixed(1)} • ` +
+            `${movieDetails.release_date.slice(0, 4)} • ` +
+            `${runtimeHour}h ${runtimeMinute}m`;
+
+        moviePoster.src = posterUrl;
+        moviePoster.alt = movieDetails.title;
+
+        movieOverview.textContent = movieDetails.overview;
+
+        const genres = movieDetails.genres.map(
+            genre => genre.name
+        );
+
+        movieGenres.textContent = genres.join(" • ");
+
+        movieHero.style.backgroundImage = `
+            linear-gradient(
+                to right,
+                rgba(18,18,18,.95),
+                rgba(18,18,18,.6),
+                rgba(18,18,18,.2)
+            ),
+            url(${posterUrl})
+        `;
+
+    } catch (error) {
+        console.error("Movie details error:", error);
+
+        showMessage(
+            movieOverview,
+            "Couldn't load this movie. Please try again.",
+            "error"
+        );
+    }
+}
+
+async function displayMovieTrailer() {
+    trailerBtn.disabled = true;
+    trailerBtn.textContent = "Loading Trailer...";
+
+    try {
+        const movieVideos = await getMovieVideos(movieId);
+
+        const trailer = movieVideos.results.find(
+            video =>
+                video.type === "Trailer" &&
+                video.site === "YouTube"
+        );
+
+        if (!trailer) {
+            trailerBtn.textContent = "Trailer Unavailable";
+            return;
+        }
+
+        trailerBtn.disabled = false;
+        trailerBtn.textContent = "Watch Trailer";
+
+        trailerBtn.addEventListener("click", () => {
+            const youtubeUrl =
+                `https://www.youtube.com/watch?v=${trailer.key}`;
+
+            window.open(youtubeUrl, "_blank");
+        });
+
+    } catch (error) {
+        console.error("Trailer error:", error);
+
+        trailerBtn.textContent = "Trailer Unavailable";
+        trailerBtn.disabled = true;
+    }
 }
 
 function createCastCard(actor){
@@ -146,4 +240,5 @@ watchlistBtn.addEventListener("click", () => {
 
 displayMovieDetails();
 displayMovieTrailer();
-displayCast(mainCast, castContainer);
+loadCast();
+loadSimilarMovies();

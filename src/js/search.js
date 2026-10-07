@@ -21,25 +21,27 @@ searchForm.addEventListener("submit", async (event) => {
 
     showMessage(searchResultsContainer, "Searching for movies");
 
-    try{
-     //for inputs with special character
-    const encodedMovieName = encodeURIComponent(movieName); 
-    
+try {
+    const encodedMovieName = encodeURIComponent(movieName);
     const searchedMovies = await getSearchedMovies(encodedMovieName);
 
-    if(searchedMovies.results.length === 0) {
-        console.log(searchResultsContainer);
-        showMessage(searchResultsContainer, "No movies found. Try another search.", "empty");
+    if (searchedMovies.results.length === 0) {
+        showMessage(
+            searchResultsContainer,
+            "No movies found. Try another search.",
+            "empty"
+        );
         return;
     }
 
-     displayMovies(searchedMovies, searchResultsContainer)
-
-    }
-
-    catch (error){
-
-        showMessage(searchResultsContainer, "Something went wrong. Please check your internet connection and try again.", "error")
-    }
+    displayMovies(searchedMovies, searchResultsContainer);
+}
+catch (error) {
+    showMessage(
+        searchResultsContainer,
+        "Something went wrong. Please check your internet connection and try again.",
+        "error"
+    );
+}
    
 })

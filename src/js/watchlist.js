@@ -1,5 +1,6 @@
 import { getMovieDetails } from "./api/tmdb.js";
 import { displayMovies } from "./ui/moviecard.js";
+import { showMessage } from "./ui/status.js";
 
 const storedWatchlist = localStorage.getItem("watchlist");
 
@@ -12,8 +13,22 @@ const watchlistContainer = document.querySelector(".watchlist-results");
 console.log("watchlistIds:", watchlistIds);
 
 async function loadWatchlistMovies() {
-    if (watchlistIds.length > 0) {
 
+    showMessage(
+        watchlistContainer,
+        "Loading your watchlist..."
+    );
+
+    if (watchlistIds.length === 0) {
+        showMessage(
+            watchlistContainer,
+            "Your watchlist is empty.",
+            "empty"
+        );
+        return;
+    }
+
+    try {
         const movies = await Promise.all(
             watchlistIds.map(id => getMovieDetails(id))
         );
@@ -22,7 +37,18 @@ async function loadWatchlistMovies() {
 
         displayMovies(
             { results: movies },
-            watchlistContainer, true, "Remove from Watchlist"
+            watchlistContainer,
+            true,
+            "Remove from Watchlist"
+        );
+
+    } catch (error) {
+        console.error("Watchlist error:", error);
+
+        showMessage(
+            watchlistContainer,
+            "Couldn't load your watchlist. Please try again.",
+            "error"
         );
     }
 }

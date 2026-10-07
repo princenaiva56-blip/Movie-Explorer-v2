@@ -42,7 +42,6 @@ export async function getTopRatedMovies() {
     }
 
 export async function getMovieDetails(movieId) {
-    try {
 
         const response4 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`)
 
@@ -53,14 +52,10 @@ export async function getMovieDetails(movieId) {
         const detailsData = await response4.json();
         return detailsData;
 
-    } catch (error) {
-        return error.message;
-
-    }
 }
 
 export async function getMovieVideos(movieId) {
-    try {
+    
         const response5 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`)
 
         if (!response5.ok) {
@@ -70,14 +65,9 @@ export async function getMovieVideos(movieId) {
         const videosData = await response5.json();
 
         return videosData;
-    } catch (error) {
-        return error.message;
-    }
 }
 
 export async function getSimilarMovies(movieId) {
-
-    try {
 
         const response6 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`)
 
@@ -88,14 +78,10 @@ export async function getSimilarMovies(movieId) {
         const similarMoviesData = await response6.json()
 
         return similarMoviesData;
-    } catch (error) {
-        return error.message;
-    }
 }
 
 export async function getMovieCredits(movieId) {
 
-    try {
 
         const response7 = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`)
 
@@ -106,14 +92,9 @@ export async function getMovieCredits(movieId) {
         const creditsData = await response7.json();
 
         return creditsData;
-    } catch (error) {
-        return error.message;
-    }
 }
 
 export async function getSearchedMovies(encodedMovieName) {
-
-    try {
 
         const response8 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodedMovieName}`)
 
@@ -125,10 +106,4 @@ export async function getSearchedMovies(encodedMovieName) {
 
         return searchedMovies;
     }
-
-    catch (error) {
-        return error.message;
-    }
-}
-
-getSearchedMovies();
+    
