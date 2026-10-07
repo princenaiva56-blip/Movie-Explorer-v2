@@ -1,5 +1,5 @@
 export function showMessage(container, message, type = "info") {
-    container.innerHtml = "";
+    container.innerHTML = "";
 
     const messageElement = document.createElement("p");
 

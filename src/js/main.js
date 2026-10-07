@@ -1,5 +1,6 @@
 import { getTrendingMovies, getPopularMovies, getTopRatedMovies } from "./api/tmdb.js";
 import { displayMovies, createMovieCard } from "./ui/moviecard.js";
+import { showMessage } from "./ui/status.js";
 
 const hero = document.querySelector(".hero");
 const heroTitle = document.querySelector(".hero-title");
@@ -9,24 +10,126 @@ const trendingContainer = document.querySelector(".trending-container");
 const popularContainer = document.querySelector(".popular-container");
 const topRatedContainer = document.querySelector(".toprated-container");
 
-async function init(){
+const movieButtons = document.querySelector(".movie-buttons")
+const watchTrailerBtn = document.querySelector(".primary-btn");
+const moreDetailsBtn = document.querySelector(".secondary-btn");
 
-const trendingMovies = await getTrendingMovies();
-const popularMovies = await getPopularMovies();
-const topRatedMovies = await getTopRatedMovies();
+async function init() {
 
-displayFeaturedMovie(trendingMovies);
-displayMovies(trendingMovies, trendingContainer);
-displayMovies(popularMovies, popularContainer);
-displayMovies(topRatedMovies, topRatedContainer);
-        
-    };
+    showHeroLoading();
+
+    showMessage(trendingContainer, "Loading trending movies...");
+    showMessage(popularContainer, "Loading popular movies...");
+    showMessage(topRatedContainer, "Loading top rated movies...");
+
+
+    // TRENDING
+    try {
+        const trendingMovies = await getTrendingMovies();
+
+        if (trendingMovies.results.length === 0) {
+
+            showMessage(
+                trendingContainer,
+                "No trending movies available right now.",
+                "empty"
+            );
+
+            showHeroError();
+
+        } else {
+
+            displayFeaturedMovie(trendingMovies);
+            displayMovies(trendingMovies, trendingContainer);
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            trendingContainer,
+            "Unable to load trending movies.",
+            "error"
+        );
+
+        showHeroError();
+    }
+
+
+    // POPULAR
+    try {
+        const popularMovies = await getPopularMovies();
+
+        if (popularMovies.results.length === 0) {
+    showMessage(
+        popularContainer,
+        "No popular movies available right now.",
+        "empty"
+    );
+} else {
+    displayMovies(popularMovies, popularContainer);
+}
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            popularContainer,
+            "Unable to load popular movies.",
+            "error"
+        );
+    }
+
+
+    // TOP RATED
+    try {
+        const topRatedMovies = await getTopRatedMovies();
+
+        if (topRatedMovies.results.length === 0) {
+    showMessage(
+        topRatedContainer,
+        "No top rated movies available right now.",
+        "empty"
+    );
+} else {
+    displayMovies(topRatedMovies, topRatedContainer);
+}
+
+    } catch (error) {
+
+        console.error(error);
+
+        showMessage(
+            topRatedContainer,
+            "Unable to load top rated movies.",
+            "error"
+        );
+    }
+}
 
     init();
     
    function displayFeaturedMovie(trendingMovies){
+
+    movieButtons.style.display = "flex";
+
     const imageUrl =`https://image.tmdb.org/t/p/original${trendingMovies.results[0].backdrop_path}`;
+
     const featuredMovie = trendingMovies.results[0];
+
+    watchTrailerBtn.onclick = () => {
+    // we'll connect this to the trailer next
+        };
+
+    moreDetailsBtn.onclick = () => {
+    window.location.href = `movie.html?id=${featuredMovie.id}`;
+
+    console.log("Featured Movie :" ,window.location.href = `movie.html?id=${featuredMovie.id}`);
+    
+    };
     
     hero.style.backgroundImage = `
     linear-gradient(
@@ -41,3 +144,23 @@ displayMovies(topRatedMovies, topRatedContainer);
 
 }
 
+function showHeroLoading() {
+    hero.style.backgroundImage = "none";
+
+    heroTitle.textContent = "Loading featured movie...";
+    heroMeta.textContent = "";
+    heroOverview.textContent = "";
+
+    movieButtons.style.display = "none";
+}
+
+function showHeroError() {
+    hero.style.backgroundImage = "none";
+
+    heroTitle.textContent = "Unable to load featured movie";
+    heroMeta.textContent = "";
+    heroOverview.textContent =
+        "We couldn't load movie information right now. Please try again later.";
+
+    movieButtons.style.display = "none";
+}

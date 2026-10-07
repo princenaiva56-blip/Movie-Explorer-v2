@@ -28,6 +28,7 @@ searchForm.addEventListener("submit", async (event) => {
     const searchedMovies = await getSearchedMovies(encodedMovieName);
 
     if(searchedMovies.results.length === 0) {
+        console.log(searchResultsContainer);
         showMessage(searchResultsContainer, "No movies found. Try another search.", "empty");
         return;
     }
