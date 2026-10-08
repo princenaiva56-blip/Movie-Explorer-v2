@@ -1,431 +1,7 @@
-/*TABLET*/
-@media (max-width: 768px) {
-
-    .navbar {
-        padding: 0 24px;
-    }
-
-    nav {
-        gap: 20px;
-    }
-
-    nav a {
-        font-size: 0.9rem;
-    }
-
-    .logo {
-        font-size: 1.3rem;
-    }
-
-    .hero {
-    padding: 0 24px;
-    min-height: 420px;
-}
-
-.hero-content {
-    max-width: 100%;
-    gap: 16px;
-}
-
-.hero-title {
-    font-size: 2.5rem;
-}
-
-.hero-overview {
-    font-size: 0.95rem;
-    line-height: 1.6;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.hero-buttons {
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.movie-buttons button {
-    padding: 12px 18px;
-    font-size: 0.9rem;
-}
-
-.secondary-btn {
-    left: 10px;
-}
-
-.movie-section {
-    padding: 0 24px;
-    margin-top: 36px;
-}
-
-.movie-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 18px;
-}
-
-.movie-track {
-    gap: 14px;
-    padding-bottom: 8px;
-}
-
-.movie-card {
-    flex: 0 0 140px;
-}
-
-.movie-card h3 {
-    margin-top: 8px;
-    font-size: 0.9rem;
-    min-height: 2.4em;
-}
-
-.movie-card p {
-    margin-top: 8px;
-    font-size: 0.8rem;
-}
-
-.movie-container {
-    padding: 40px 24px;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-}
-
-.movie-poster {
-    width: 200px;
-}
-
-.movie-content {
-    width: 100%;
-    text-align: center;
-}
-
-.movie-title {
-    font-size: 2rem;
-}
-
-.movie-meta {
-    font-size: 0.9rem;
-}
-
-.movie-overview {
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.movie-genres {
-    font-size: 0.85rem;
-}
-
-.movie-content .movie-buttons {
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.movie-content .movie-buttons button {
-    padding: 12px 18px;
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-}
-
-.trailer-modal {
-    padding: 16px;
-}
-
-.trailer-container {
-    width: 100%;
-    border-radius: 8px;
-}
-
-.close-trailer {
-    top: 8px;
-    right: 8px;
-}
-
-.similar-movies {
-    margin-top: 20px;
-}
-
-.similar-movies .movie-section {
-    padding: 0 24px;
-}
-
-.similar-container {
-    gap: 14px;
-}
-
-.cast {
-    margin-top: 20px;
-}
-
-.cast-container {
-    display: flex;
-    gap: 14px;
-
-    overflow-x: auto;
-
-    padding-bottom: 8px;
-
-    scroll-behavior: smooth;
-}
-
-.cast-container::-webkit-scrollbar {
-    display: none;
-}
-
-.cast-card {
-    flex: 0 0 120px;
-}
-
-.cast-card img {
-    width: 100%;
-    aspect-ratio: 2 / 3;
-
-    object-fit: cover;
-
-    border-radius: 12px;
-}
-
-.cast-card h3 {
-    margin-top: 8px;
-
-    font-size: 0.85rem;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.cast-card p {
-    margin-top: 5px;
-
-    font-size: 0.75rem;
-    color: #9ca3af;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.search-page {
-    padding: 40px 24px;
-}
-
-.search-header {
-    margin-bottom: 40px;
-}
-
-.search-header h1 {
-    font-size: 2rem;
-}
-
-.search-form {
-    margin-top: 24px;
-    gap: 8px;
-}
-
-.search-form input {
-    min-width: 0;
-    padding: 14px 16px;
-}
-
-.search-form button {
-    padding: 0 18px;
-}
-
-.search-results {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px 14px;
-}
-
-.favorites-page {
-    padding: 40px 24px;
-}
-
-.favorites-section {
-    width: 100%;
-}
-
-.favorites-header h1 {
-    font-size: 1.8rem;
-}
-
-.favorites-results {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px 14px;
-}
-
-}
-
-
-
-@media (max-width: 600px) {
-    .favorites-page {
-        padding: 30px 20px;
-    }
-
-    .favorites-results {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-}
-
-
-/* SMALL PHONES*/
-
-@media (max-width: 480px) {
-
-    /* NAVBAR */
-
-    .navbar {
-        padding: 0 16px;
-    }
-
-    nav {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 0.75rem;
-    }
-
-    .logo {
-        font-size: 1.1rem;
-    }
-
-
-    /* HERO */
-
-    .hero {
-        padding: 0 20px;
-        min-height: 400px;
-    }
-
-    .hero-title {
-        font-size: 2.1rem;
-    }
-
-    .hero-overview {
-        font-size: 0.9rem;
-        -webkit-line-clamp: 3;
-    }
-
-    .hero-buttons {
-        width: 100%;
-    }
-
-    .movie-buttons button {
-        flex: 1;
-        min-width: 130px;
-    }
-
-
-    /* MOVIE SECTIONS */
-
-    .movie-section {
-        padding: 0 20px;
-    }
-
-    .movie-section h2 {
-        font-size: 1.35rem;
-    }
-
-    .movie-card {
-        flex: 0 0 130px;
-    }
-
-
-    /* MOVIE DETAILS */
-
-    .movie-container {
-        padding: 32px 20px;
-    }
-
-    .movie-poster {
-        width: 180px;
-    }
-
-    .movie-title {
-        font-size: 1.8rem;
-    }
-
-    .movie-content .movie-buttons {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .movie-content .movie-buttons button {
-        width: 100%;
-    }
-
-
-    /* CAST */
-
-    .cast-container {
-        gap: 12px;
-    }
-
-    .cast-card {
-        flex: 0 0 105px;
-    }
-
-
-    /* SEARCH */
-
-    .search-page {
-        padding: 32px 20px;
-    }
-
-    .search-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .search-form {
-        gap: 8px;
-    }
-
-    .search-form input {
-        padding: 13px 14px;
-        font-size: 0.9rem;
-    }
-
-    .search-form button {
-        padding: 0 15px;
-        font-size: 0.9rem;
-    }
-
-    .search-results {
-        gap: 20px 12px;
-    }
-
-
-    /* FAVORITES / WATCHLIST */
-
-    .favorites-page,
-    .watchlist-page {
-        padding: 32px 20px;
-    }
-
-    .favorites-results,
-    .watchlist-results {
-        gap: 20px 12px;
-    }
-
-
-    /* TRAILER MODAL */
-
-    .trailer-modal {
-        padding: 12px;
-    }
-
-    .trailer-container {
-        border-radius: 6px;
-    }
-
-}
-
-/*MOBILE NAVIGATION*/
+/* =========================================================
+   DESKTOP DEFAULT
+   Mobile navigation is hidden on desktop
+========================================================= */
 
 .menu-toggle,
 .mobile-sidebar,
@@ -433,24 +9,65 @@
     display: none;
 }
 
+
+/* =========================================================
+   TABLET / MOBILE
+   max-width: 768px
+========================================================= */
+
 @media (max-width: 768px) {
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+        padding: 0 24px;
+    }
 
     .desktop-nav {
         display: none;
     }
 
+    .logo {
+        font-size: 1.3rem;
+    }
+
     .menu-toggle {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 42px;
+        height: 42px;
 
         border: none;
-        background: none;
+        border-radius: 10px;
 
+        background: transparent;
         color: white;
 
         font-size: 1.7rem;
 
         cursor: pointer;
+
+        transition:
+            background 0.2s ease,
+            transform 0.2s ease;
     }
+
+    .menu-toggle:hover {
+        background: #242424;
+    }
+
+    .menu-toggle:active {
+        transform: scale(0.94);
+    }
+
+
+    /* =====================================================
+       MOBILE SIDEBAR
+    ===================================================== */
 
     .mobile-sidebar {
         display: flex;
@@ -462,19 +79,20 @@
         right: 0;
 
         width: min(300px, 82%);
-
         height: 100vh;
 
         padding: 24px 20px;
 
-        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.45);
-
         background: #181818;
+
         border-left: 1px solid #2c2c2c;
+
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.45);
 
         z-index: 1001;
 
         transform: translateX(100%);
+
         transition:
             transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -493,12 +111,9 @@
     }
 
     .mobile-sidebar nav a {
-        position: relative;
-
         display: flex;
         align-items: center;
 
-        
         padding: 14px 16px;
 
         border-radius: 10px;
@@ -519,16 +134,17 @@
     .mobile-sidebar nav a:hover {
         background: #242424;
         color: white;
+
         transform: translateX(4px);
     }
 
-        .mobile-sidebar nav a:active {
+    .mobile-sidebar nav a:active {
         transform: translateX(2px);
     }
 
-
     .close-menu {
         align-self: flex-end;
+
         display: flex;
         align-items: center;
         justify-content: center;
@@ -536,10 +152,11 @@
         width: 40px;
         height: 40px;
 
+        border: none;
         border-radius: 10px;
-        background: none;
 
-        color:  #d1d1d1;
+        background: transparent;
+        color: #d1d1d1;
 
         font-size: 2rem;
 
@@ -550,23 +167,590 @@
             color 0.2s ease;
     }
 
-        .close-menu:hover {
+    .close-menu:hover {
         background: #252525;
         color: white;
     }
 
-    .sidebar-overlay {
-        position: fixed;
 
+    /* =====================================================
+       SIDEBAR OVERLAY
+    ===================================================== */
+
+    .sidebar-overlay {
+        display: block;
+
+        position: fixed;
         inset: 0;
 
         background: rgba(0, 0, 0, 0.65);
 
         z-index: 1000;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
     }
 
     .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    /* =====================================================
+       HOME HERO
+    ===================================================== */
+
+    .hero {
+        padding: 0 24px;
+        min-height: 420px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        gap: 16px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-overview {
+        font-size: 0.95rem;
+        line-height: 1.6;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+
+        overflow: hidden;
+    }
+
+    .hero-buttons {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .movie-buttons button {
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+
+    .secondary-btn {
+        left: 0;
+    }
+
+
+    /* =====================================================
+       MOVIE SECTIONS / CAROUSELS
+    ===================================================== */
+
+    .movie-section {
+        padding: 0 24px;
+        margin-top: 36px;
+    }
+
+    .movie-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+    }
+
+    .movie-track {
+        gap: 14px;
+        padding-bottom: 8px;
+    }
+
+    .movie-card {
+        flex: 0 0 140px;
+    }
+
+    .movie-card h3 {
+        margin-top: 8px;
+
+        font-size: 0.9rem;
+
+        min-height: 2.4em;
+    }
+
+    .movie-card p {
+        margin-top: 8px;
+        font-size: 0.8rem;
+    }
+
+
+    /* =====================================================
+       MOVIE DETAILS
+    ===================================================== */
+
+    .movie-hero {
+        min-height: auto;
+
+        padding: 80px 24px 70px;
+
+        align-items: flex-end;
+    }
+
+    .movie-container {
+        width: 100%;
+
         display: block;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hide duplicate foreground poster on mobile */
+    .movie-poster {
+        display: none;
+    }
+
+    .movie-content {
+        width: 100%;
+
+        text-align: left;
+
+        position: relative;
+        z-index: 2;
+    }
+
+    .movie-title {
+        font-size: 2.4rem;
+        line-height: 1.1;
+
+        margin-bottom: 14px;
+    }
+
+    .movie-meta {
+        font-size: 0.95rem;
+        margin-bottom: 14px;
+    }
+
+    .movie-genres {
+        font-size: 0.9rem;
+        line-height: 1.5;
+
+        margin-bottom: 20px;
+    }
+
+    .movie-overview {
+        max-width: 100%;
+
+        font-size: 0.95rem;
+        line-height: 1.7;
+
+        margin-bottom: 28px;
+    }
+
+    .movie-content .movie-buttons {
+        display: flex;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+
+        justify-content: flex-start;
+    }
+
+    .movie-content .movie-buttons button {
+        flex: 1;
+
+        min-width: 140px;
+
+        padding: 12px 16px;
+
+        font-size: 0.85rem;
+
+        margin-bottom: 0;
+    }
+
+    /* Dark cinematic overlay */
+    .movie-hero::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+            to bottom,
+            rgba(18, 18, 18, 0.45),
+            rgba(18, 18, 18, 0.75) 55%,
+            #121212 100%
+        );
+
+        z-index: 1;
+
+        pointer-events: none;
+    }
+
+    .movie-hero::after {
+        z-index: 1;
+    }
+
+
+    /* =====================================================
+       CAST
+    ===================================================== */
+
+    .cast {
+        margin-top: 20px;
+    }
+
+    .cast-container {
+        display: flex;
+
+        gap: 14px;
+
+        overflow-x: auto;
+
+        padding-bottom: 8px;
+
+        scroll-behavior: smooth;
+    }
+
+    .cast-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cast-card {
+        flex: 0 0 120px;
+    }
+
+    .cast-card img {
+        width: 100%;
+
+        aspect-ratio: 2 / 3;
+
+        object-fit: cover;
+
+        border-radius: 12px;
+    }
+
+    .cast-card h3 {
+        margin-top: 8px;
+
+        font-size: 0.85rem;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .cast-card p {
+        margin-top: 5px;
+
+        font-size: 0.75rem;
+        color: #9ca3af;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    /* =====================================================
+       SIMILAR MOVIES
+    ===================================================== */
+
+    .similar-movies {
+        margin-top: 20px;
+    }
+
+    .similar-movies .movie-section {
+        padding: 0 24px;
+    }
+
+    .similar-container {
+        gap: 14px;
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    .search-page {
+        padding: 40px 24px;
+    }
+
+    .search-header {
+        margin-bottom: 40px;
+    }
+
+    .search-header h1 {
+        font-size: 2rem;
+    }
+
+    .search-form {
+        margin-top: 24px;
+        gap: 8px;
+    }
+
+    .search-form input {
+        min-width: 0;
+
+        padding: 14px 16px;
+    }
+
+    .search-form button {
+        padding: 0 18px;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 24px 14px;
+    }
+
+
+    /* =====================================================
+       FAVORITES
+    ===================================================== */
+
+    .favorites-page {
+        padding: 40px 24px;
+    }
+
+    .favorites-section {
+        width: 100%;
+    }
+
+    .favorites-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .favorites-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px 14px;
+    }
+
+
+    /* =====================================================
+       WATCHLIST
+    ===================================================== */
+
+    .watchlist-page {
+        padding: 40px 24px;
+    }
+
+    .watchlist-section {
+        width: 100%;
+    }
+
+    .watchlist-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .watchlist-results {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px 14px;
+    }
+
+
+    /* =====================================================
+       TRAILER MODAL
+    ===================================================== */
+
+    .trailer-modal {
+        padding: 16px;
+    }
+
+    .trailer-container {
+        width: 100%;
+
+        border-radius: 8px;
+    }
+
+    .close-trailer {
+        top: 8px;
+        right: 8px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   max-width: 480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+
+    /* =====================================================
+       HOME HERO
+    ===================================================== */
+
+    .hero {
+        padding: 0 20px;
+        min-height: 400px;
+    }
+
+    .hero-title {
+        font-size: 2.1rem;
+    }
+
+    .hero-overview {
+        font-size: 0.9rem;
+
+        -webkit-line-clamp: 3;
+    }
+
+    .hero-buttons {
+        width: 100%;
+    }
+
+    .movie-buttons button {
+        flex: 1;
+        min-width: 130px;
+    }
+
+
+    /* =====================================================
+       MOVIE SECTIONS
+    ===================================================== */
+
+    .movie-section {
+        padding: 0 20px;
+    }
+
+    .movie-section h2 {
+        font-size: 1.35rem;
+    }
+
+    .movie-card {
+        flex: 0 0 130px;
+    }
+
+
+    /* =====================================================
+       MOVIE DETAILS
+    ===================================================== */
+
+    .movie-hero {
+        padding: 70px 20px 60px;
+    }
+
+    .movie-title {
+        font-size: 2rem;
+    }
+
+    .movie-overview {
+        font-size: 0.9rem;
+        line-height: 1.65;
+    }
+
+    .movie-content .movie-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .movie-content .movie-buttons button {
+        width: 100%;
+        flex: none;
+    }
+
+
+    /* =====================================================
+       CAST
+    ===================================================== */
+
+    .cast-container {
+        gap: 12px;
+    }
+
+    .cast-card {
+        flex: 0 0 105px;
+    }
+
+
+    /* =====================================================
+       SIMILAR MOVIES
+    ===================================================== */
+
+    .similar-movies .movie-section {
+        padding: 0 20px;
+    }
+
+    .similar-container {
+        gap: 12px;
+    }
+
+
+    /* =====================================================
+       SEARCH
+    ===================================================== */
+
+    .search-page {
+        padding: 32px 20px;
+    }
+
+    .search-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .search-form {
+        gap: 8px;
+    }
+
+    .search-form input {
+        padding: 13px 14px;
+
+        font-size: 0.9rem;
+    }
+
+    .search-form button {
+        padding: 0 15px;
+
+        font-size: 0.9rem;
+    }
+
+    .search-results {
+        gap: 20px 12px;
+    }
+
+
+    /* =====================================================
+       FAVORITES / WATCHLIST
+    ===================================================== */
+
+    .favorites-page,
+    .watchlist-page {
+        padding: 32px 20px;
+    }
+
+    .favorites-results,
+    .watchlist-results {
+        gap: 20px 12px;
+    }
+
+
+    /* =====================================================
+       TRAILER MODAL
+    ===================================================== */
+
+    .trailer-modal {
+        padding: 12px;
+    }
+
+    .trailer-container {
+        border-radius: 6px;
     }
 
 }
