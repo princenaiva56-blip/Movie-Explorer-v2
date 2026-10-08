@@ -26,13 +26,3 @@
     gap: 25px;
 }
 
-@media (max-width: 600px) {
-    .favorites-page {
-        padding: 30px 20px;
-    }
-
-    .favorites-results {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-}

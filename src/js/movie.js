@@ -20,6 +20,10 @@ const trailerBtn = document.querySelector(".primary-btn");
 const similarContainer = document.querySelector(".similar-container");
 const castContainer = document.querySelector(".cast-container");
 
+const trailerModal = document.querySelector(".trailer-modal");
+const trailerVideo = document.querySelector(".trailer-video");
+const closeTrailerBtn = document.querySelector(".close-trailer");
+
 
 async function loadSimilarMovies() {
     showMessage(similarContainer, "Loading similar movies...");
@@ -160,12 +164,12 @@ async function displayMovieTrailer() {
         trailerBtn.disabled = false;
         trailerBtn.textContent = "Watch Trailer";
 
-        trailerBtn.addEventListener("click", () => {
-            const youtubeUrl =
-                `https://www.youtube.com/watch?v=${trailer.key}`;
+   trailerBtn.addEventListener("click", () => {
+    trailerVideo.src =
+        `https://www.youtube.com/embed/${trailer.key}?autoplay=1`;
 
-            window.open(youtubeUrl, "_blank");
-        });
+    trailerModal.classList.add("active");
+});
 
     } catch (error) {
         console.error("Trailer error:", error);
@@ -174,6 +178,11 @@ async function displayMovieTrailer() {
         trailerBtn.disabled = true;
     }
 }
+
+closeTrailerBtn.addEventListener("click", () => {
+    trailerModal.classList.remove("active");
+    trailerVideo.src = "";
+});
 
 function createCastCard(actor){
 

@@ -6,21 +6,43 @@
     <title>Document</title>
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/movie.css">
+    <link rel="stylesheet" href="src/css/responsive.css">
 </head>
 <body>
 
-        <header class="navbar">
+<header class="navbar">
 
-        <div class="logo">Movie Explorer</div>
+    <div class="logo">Movie Explorer</div>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="search.html">Search</a>
-            <a href="favorites.html">Favorites</a>
-            <a href="watchlist.html">WatchList</a>
-        </nav>
+    <nav class="desktop-nav">
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="watchlist.html">WatchList</a>
+    </nav>
 
-    </header>
+    <button class="menu-toggle" aria-label="Open navigation">
+        ☰
+    </button>
+
+</header>
+
+<aside class="mobile-sidebar">
+
+    <button class="close-menu" aria-label="Close navigation">
+        &times;
+    </button>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="favorites.html">Favorites</a>
+        <a href="watchlist.html">WatchList</a>
+    </nav>
+
+</aside>
+
+<div class="sidebar-overlay"></div>
 
     <main>
 
@@ -77,9 +99,24 @@
 
 
     </main>
-    
+
+    <div class="trailer-modal">
+    <div class="trailer-container">
+        <button class="close-trailer">&times;</button>
+
+        <iframe
+            class="trailer-video"
+            src=""
+            title="Movie Trailer"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
 
     <script type="module" src="src/js/movie.js"></script>
     <script type="module" src="src/js/favorites.js"></script>
+    <script type="module" src="src/js/navigation.js"></script>
 </body>
 </html>

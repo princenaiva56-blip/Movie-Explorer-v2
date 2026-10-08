@@ -162,3 +162,62 @@
 
     font-size: .9rem;
 }
+
+.trailer-modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.85);
+
+    z-index: 1000;
+}
+
+.trailer-modal.active {
+    display: flex;
+}
+
+.trailer-container {
+    position: relative;
+
+    width: min(900px, 100%);
+    aspect-ratio: 16 / 9;
+
+    background: #000;
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.trailer-video {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+}
+
+.close-trailer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    z-index: 2;
+
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
